@@ -1,0 +1,50 @@
+spring:
+  application:
+    name: credit-card-bill   # 对应config server所获取的配置文件的{application}
+  cloud:
+    config:
+      fail-fast: true   #快速失败
+      profile: local    # profile对应config server所获取的配置文件中的{profile}
+      label: beta       # 指定Git仓库的分支，对应config server所获取的配置文件的{label}
+      discovery:
+        enabled: true
+        service-id: config-server   # 指定Config Server在服务发现中的serviceId，默认是configserver
+  profiles:
+    active: local
+
+eureka:
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+
+---
+spring:
+  profiles: local   # 指定profile=local
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8764/eureka/
+
+---
+spring:
+  profiles: dev   # 指定profile=dev
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://10.139.60.76:8761/eureka/,http://10.139.60.77:8761/eureka/
+
+---
+spring:
+  profiles: test   # 指定profile=test
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://10.139.60.76:8761/eureka/,http://10.139.60.77:8761/eureka/
+
+---
+spring:
+  profiles: production   # 指定profile=production
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://10.10.16.81:8761/eureka/,http://10.10.17.46:8761/eureka/,http://10.10.17.58:8761/eureka/

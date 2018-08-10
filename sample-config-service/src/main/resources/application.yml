@@ -1,0 +1,63 @@
+server:  
+  port: ${PORT:8889}
+    
+spring:
+  application:
+    name: config-server
+  cloud:
+    config:
+      server:
+        monitor:
+          gitlab:
+            enabled: true
+        git:
+          cloneOnStart: true
+          uri: https://git.kkcredit.cn/app-server/micro-config-repo.git
+          username: webserver
+          password: kkdkkd123
+          search-paths: /,kakalife,rong360,card-center,credit-card-bill,kaniu
+  profiles:
+    active: dev
+
+---
+spring:
+  profiles: dev
+  rabbitmq:
+    host: host123
+    port: 5672
+    username: kkuser
+    password: kkuser123
+  cloud:
+    bus:
+      trace:
+        enabled: true
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8764/eureka/
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+
+---
+spring:
+  profiles: production                            # 指定profile=production
+  cloud:
+    bus:
+      trace:
+        enabled: true     # 开启cloud bus的跟踪
+  rabbitmq:               # 使用rabbitmq
+    username: rabbitadmin
+    password: rabbitadmin
+    addresses: host1:5672,host2:5672,host3:5672
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8764/eureka/,http://localhost:8762/eureka/,http://localhost:8763/eureka/ # 配置服务中心地址
+    instance:
+      prefer-ip-address: true
+      instance-id: ${spring.cloud.client.ip-address}:${server.port}
+
+management:
+  security:
+    enabled: false

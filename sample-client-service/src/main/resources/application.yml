@@ -1,0 +1,19 @@
+server:
+  port: 9013
+  tomcat:
+    max-threads: 1000
+    min-spare-threads: 100
+    accept-count: 5000
+
+management:
+  security:
+    enabled: false  #为访问/refresh
+
+## INFO
+info:
+  app:
+    name: @project.artifactId@
+    encoding: @project.build.sourceEncoding@
+    java:
+      source: @java.version@
+      target: @java.version@
