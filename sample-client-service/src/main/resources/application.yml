@@ -6,8 +6,10 @@ server:
     accept-count: 5000
 
 management:
-  security:
-    enabled: false  #为访问/refresh
+  endpoints:
+    web:
+      exposure:
+        include: bus-refresh
 
 ## INFO
 info:

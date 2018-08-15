@@ -19,7 +19,7 @@ eureka:
   server:
     enable-self-preservation: false
 server:
-  port: ${PORT:8764}
+  port: ${PORT:8761}
 
 ---
 spring:
@@ -32,7 +32,7 @@ eureka:
       zone: zone2
   client:
     serviceUrl:
-      defaultZone: http://localhost:8764/eureka/,http://localhost:8763/eureka/
+      defaultZone: http://localhost:8761/eureka/,http://localhost:8763/eureka/
   server:
     enable-self-preservation: false
 server:
@@ -49,7 +49,7 @@ eureka:
       zone: zone3
   client:
     serviceUrl:
-      defaultZone: http://localhost:8764/eureka/,http://localhost:8762/eureka/
+      defaultZone: http://localhost:8761/eureka/,http://localhost:8762/eureka/
   server:
     enable-self-preservation: false
 server:

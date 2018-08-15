@@ -23,7 +23,7 @@ spring:
 spring:
   profiles: dev
   rabbitmq:
-    host: host123
+    host: 10.139.60.131:5672
     port: 5672
     username: kkuser
     password: kkuser123
@@ -34,7 +34,7 @@ spring:
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://localhost:8764/eureka/
+      defaultZone: http://localhost:8761/eureka/
   instance:
     prefer-ip-address: true
     instance-id: ${spring.cloud.client.ip-address}:${server.port}
@@ -49,15 +49,17 @@ spring:
   rabbitmq:               # 使用rabbitmq
     username: rabbitadmin
     password: rabbitadmin
-    addresses: host1:5672,host2:5672,host3:5672
+    addresses: 10.10.17.35:5672,10.10.17.18:5672,10.10.16.76:5672
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://localhost:8764/eureka/,http://localhost:8762/eureka/,http://localhost:8763/eureka/ # 配置服务中心地址
-    instance:
-      prefer-ip-address: true
-      instance-id: ${spring.cloud.client.ip-address}:${server.port}
+      defaultZone: http://localhost:8761/eureka/,http://localhost:8762/eureka/,http://localhost:8763/eureka/ # 配置服务中心地址
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
 
 management:
-  security:
-    enabled: false
+  endpoints:
+    web:
+      exposure:
+        include: bus-refresh
