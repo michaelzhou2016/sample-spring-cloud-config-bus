@@ -9,6 +9,11 @@ spring:
       discovery:
         enabled: true
         service-id: config-server   # 指定Config Server在服务发现中的serviceId，默认是configserver
+  zipkin:
+    base-url: http://localhost:9411
+  sleuth:
+    sampler:
+      percentage: 1.0
   profiles:
     active: local
 
@@ -44,10 +49,10 @@ eureka:
 ---
 spring:
   profiles: production   # 指定profile=production
-  rabbitmq:
-    addresses: 10.139.60.131:5672
-    username: kkuser
-    password: kkuser123
+  rabbitmq:               # 使用rabbitmq
+    username: rabbitadmin
+    password: rabbitadmin
+    addresses: 10.10.17.35:5672,10.10.17.18:5672,10.10.16.76:5672
 eureka:
   client:
     serviceUrl:

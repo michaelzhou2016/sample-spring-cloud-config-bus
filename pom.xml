@@ -35,5 +35,6 @@
 		<module>sample-client-service</module>
 		<module>sample-config-service</module>
 		<module>sample-server-service</module>
+		<module>zipkin-server</module>
 	</modules>
 </project>
