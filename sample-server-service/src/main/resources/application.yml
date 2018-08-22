@@ -1,0 +1,21 @@
+server:
+  port: 9014
+  tomcat:
+    max-threads: 1000
+    min-spare-threads: 100
+    accept-count: 5000
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: bus-refresh
+
+## INFO
+info:
+  app:
+    name: @project.artifactId@
+    encoding: @project.build.sourceEncoding@
+    java:
+      source: @java.version@
+      target: @java.version@

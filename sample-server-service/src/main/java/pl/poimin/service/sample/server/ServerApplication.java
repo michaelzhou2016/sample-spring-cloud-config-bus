@@ -1,17 +1,15 @@
-package pl.piomin.service.sample.client;
+package pl.poimin.service.sample.server;
 
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
-import org.springframework.cloud.openfeign.EnableFeignClients;
 
 @SpringBootApplication
 @EnableDiscoveryClient
-@EnableFeignClients
-public class ClientApplication {
+public class ServerApplication {
 
 	public static void main(String[] args) {
-		new SpringApplicationBuilder(ClientApplication.class).web(true).run(args);
+		new SpringApplicationBuilder(ServerApplication.class).web(true).run(args);
 	}
 
 }
