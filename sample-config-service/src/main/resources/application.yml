@@ -12,10 +12,10 @@ spring:
             enabled: true
         git:
           cloneOnStart: true
-          uri: https://git.kkcredit.cn/app-server/micro-config-repo.git
-          username: webserver
-          password: kkdkkd123
-          search-paths: /,kakalife,rong360,card-center,credit-card-bill,kaniu
+          uri: https://github.com/michaelzhou2016/sample-config-repo.git
+          username: michaelzhou2016
+          password: password
+          search-paths: /,sample-client-service,sample-server-service
   profiles:
     active: dev
 

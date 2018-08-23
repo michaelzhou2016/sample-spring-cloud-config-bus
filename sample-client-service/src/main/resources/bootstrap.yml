@@ -1,11 +1,11 @@
 spring:
   application:
-    name: credit-card-bill   # 对应config server所获取的配置文件的{application}
+    name: sample-client-service   # 对应config server所获取的配置文件的{application}
   cloud:
     config:
       fail-fast: true   #快速失败
       profile: local    # profile对应config server所获取的配置文件中的{profile}
-      label: beta       # 指定Git仓库的分支，对应config server所获取的配置文件的{label}
+      label: master       # 指定Git仓库的分支，对应config server所获取的配置文件的{label}
       discovery:
         enabled: true
         service-id: config-server   # 指定Config Server在服务发现中的serviceId，默认是configserver
